@@ -28,13 +28,13 @@
               <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="/search/" class="nav-link active">Dogopedia</a>
+              <a href="/" class="nav-link active">Pokedex</a>
             </li>
             <li class="nav-item">
-              <a href="/adopt/" class="nav-link">Adopt&Rescue</a>
+              <a href="/" class="nav-link">Adopt&Rescue</a>
             </li>
             <li class="nav-item">
-              <a href="/help/" class="nav-link">Emergency Help</a>
+              <a href="/" class="nav-link">Emergency Help</a>
             </li>
           </ul>
         </div>
@@ -43,10 +43,10 @@
     <div class="container text-center mt-3">
       <h1 class="display-1">Search your Pokemon here...</h1>
     </div>
-    <form method="POST" action="/search/">
+    <form method="POST" action="/">
       <div class="container">
         <div class="row mx-5 mt-3" style="padding-left: 50px; padding-right: 50px;padding-top: 50px;">
-            <input type="post" class="form-control" name="breed" placeholder="Eg. Labrador Retriever" aria-label="default input example">
+            <input type="post" class="form-control" name="pokemon" placeholder="Eg. Pikachu" aria-label="default input example">
         </div>
           
         </div>
@@ -56,36 +56,32 @@
         <button type="submit" class="btn btn-primary">Confirm identity</button>
       </div>
       <div class="container">
-        <h1 class="lead text-center mt-5">
-          <br>{{alert}}
+        <h1 class="lead text-center mt-8">
 
           <div class="container text-center">
               <p class="text-center mb-5" style="font-size: 50px;">
-                {{breed}}
+                {{pokemon}}
               </p>
               <div class="row">
                 <div class="col-sm-6">
-                  <img src={{image1}}>
+                  {{pokedex.image | safe}}
                 </div>
-                <div class="col-sm-6">
-                  <img src={{image2}}>
+                <div class="col-sm-6 mt-5">
+                  {{pokedex.basic_info}}
                 </div>
               </div>
           </div>
           
-          <h2 class="fw-bold lead">{{statement1}}</h2>
-          
-          <p class="lh-base lead">
-          {{backg_info}}<br>
-          </p>
-          
-          <h2 class="fw-bold lead">{{statement2}}</h2>
-          
-          <p class="lh-base lead">
-          {{wiki_info}}<br>
-          {{fact1}}<br>
-          {{fact2}}<br>
-        </p>
+          <div class="row mt-5">
+            <div class="col-sm-6 mt-5">
+              {{pokedex.pokedex_data | safe}}
+            </div>
+            <div class="col-sm-6 mt-5">
+            <h2>Base Stats</h2> <br>
+              <div class="div" style="margin-left: 120px; font-size: 30px;">{{pokedex.base_stats | safe}}</div>
+            </div>
+          </div>
+
         </h1>
       </div>
     </form>
